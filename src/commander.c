@@ -77,9 +77,7 @@ command_clean(command_t *self) {
   for (int i = 0; i < self->option_count; ++i) {
     command_option_t *option = &self->options[i];
     free(option->argname);
-    option->argname = NULL;
     free(option->large);
-    option->large = NULL;
   }
   memset(self, 0, sizeof(*self));
 }
