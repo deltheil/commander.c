@@ -125,9 +125,9 @@ command_option(command_t *self, const char *small, const char *large, const char
   option->description = desc;
   option->required_arg = option->optional_arg = 0;
   option->large_with_arg = large;
-  option->argname = malloc(strlen(large)+1);
+  option->argname = malloc(strlen(large) + 1);
   assert(option->argname);
-  option->large = malloc(strlen(large)+1);
+  option->large = malloc(strlen(large) + 1);
   assert(option->large);
   parse_argname(large, option->large, option->argname);
   if ('[' == option->argname[0]) option->optional_arg = 1;
@@ -136,7 +136,7 @@ command_option(command_t *self, const char *small, const char *large, const char
 
 /*
  * Parse `argv`.
- * 
+ *
  * TODO: list of short opts (-vo as -v -o)
  */
 
