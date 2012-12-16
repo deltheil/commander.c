@@ -79,6 +79,8 @@ command_clean(command_t *self) {
     free(option->argname);
     free(option->large);
   }
+  for (int i = 0; i < self->argc; ++i)
+    free(self->argv[i]);
   memset(self, 0, sizeof(*self));
 }
 
