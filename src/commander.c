@@ -123,12 +123,15 @@ parse_argname(const char *str, char *flag, char *arg) {
 
 static char **
 normalize_args(int *argc, char **argv) {
-  int size = 0, alloc = *argc + 1;
+  int size = 0;
+  int alloc = *argc + 1;
   char **nargv = malloc(alloc * sizeof(char *));
 
-  for (int i = 0; argv[i] != NULL; ++i) {
+  for (int i = 0; argv[i]; ++i) {
     const char *arg = argv[i];
     int len = strlen(arg);
+
+    // short flag
     if (len > 2 && '-' == arg[0] && !strchr(arg + 1, '-')) {
       alloc += len - 2;
       nargv = realloc(nargv, alloc * sizeof(char *));
@@ -137,12 +140,13 @@ normalize_args(int *argc, char **argv) {
         sprintf(nargv[size], "-%c", arg[j]);
         size++;
       }
+      continue;
     }
-    else {
-      nargv[size] = malloc(len + 1);
-      strcpy(nargv[size], arg);
-      size++;
-    }
+
+    // regular arg
+    nargv[size] = malloc(len + 1);
+    strcpy(nargv[size], arg);
+    size++;
   }
 
   nargv[size] = NULL;
