@@ -1,8 +1,8 @@
+override CFLAGS += -std=c99
 
-test: test.c src/commander.c
-	$(CC) $^ -std=c99 -o $@
+test: src/commander.o
 
 clean:
-	rm -f test
+	rm -f *.o src/*.o test
 
 .PHONY: clean
