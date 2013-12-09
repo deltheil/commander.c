@@ -1,11 +1,18 @@
-
-# commander.c
+# commander
 
   Commander option parser ported to C.
 
+## Installation
+
+  Install with [clib](https://github.com/clibs/clib):
+
+```
+$ clib install clibs/commander
+```
+
 ## Automated --help
 
-  The previous example would produce the following `--help`:
+  The [example](#example) below would produce the following `--help`:
 
 ```
 
